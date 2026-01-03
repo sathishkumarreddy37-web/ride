@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>RideEase - Premium Vehicle Rentals</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <i class="fas fa-car-side"></i>
+                    <span>RideEase</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#vehicles" class="nav-link">Vehicles</a>
+                    <a href="#how-it-works" class="nav-link">How it Works</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="mobile-nav-links">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#vehicles" class="mobile-nav-link">Vehicles</a>
+                <a href="#how-it-works" class="mobile-nav-link">How it Works</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Discover Your</span>
+                    <span class="title-line gradient-text">Perfect Ride</span>
+                </h1>
+                <p class="hero-subtitle">Premium cars and bikes for your journey. Rent by kilometer, travel with freedom.</p>
+                
+                <!-- Search Box -->
+                <div class="search-box">
+                    <div class="search-row">
+                        <div class="search-field">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" id="searchLocation" placeholder="Enter location or city">
+                        </div>
+                        <div class="search-field">
+                            <i class="fas fa-filter"></i>
+                            <select id="searchType">
+                                <option value="">All Vehicles</option>
+                                <option value="car">Cars</option>
+                                <option value="bike">Bikes</option>
+                            </select>
+                        </div>
+                        <button class="search-btn" id="searchBtn">
+                            <i class="fas fa-search"></i>
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Vehicles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Cities</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Happy Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicles Section -->
+    <section class="vehicles-section" id="vehicles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Browse Our Fleet</h2>
+                <p class="section-subtitle">Choose from our wide selection of premium vehicles</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-container">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-type="all">
+                        <i class="fas fa-th"></i>
+                        All
+                    </button>
+                    <button class="filter-btn" data-type="car">
+                        <i class="fas fa-car"></i>
+                        Cars
+                    </button>
+                    <button class="filter-btn" data-type="bike">
+                        <i class="fas fa-motorcycle"></i>
+                        Bikes
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <select class="filter-select" id="filterLocation">
+                        <option value="">All Locations</option>
+                    </select>
+                    <select class="filter-select" id="filterPrice">
+                        <option value="">All Prices</option>
+                        <option value="0-5">₹0 - ₹5/km</option>
+                        <option value="5-10">₹5 - ₹10/km</option>
+                        <option value="10-20">₹10 - ₹20/km</option>
+                        <option value="20+">₹20+/km</option>
+                    </select>
+                    <select class="filter-select" id="filterRating">
+                        <option value="">All Ratings</option>
+                        <option value="4">4+ Stars</option>
+                        <option value="4.5">4.5+ Stars</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loader"></div>
+                <p>Loading vehicles...</p>
+            </div>
+
+            <!-- Vehicles Grid -->
+            <div class="vehicles-grid" id="vehiclesGrid">
+                <!-- Vehicles will be dynamically loaded here -->
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No vehicles found</h3>
+                <p>Try adjusting your filters or search in a different location</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Rent a vehicle in just 3 simple steps</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="step-number">01</div>
+                    <h3>Search & Select</h3>
+                    <p>Browse our fleet and choose the perfect vehicle for your journey based on location, ratings, and price</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="step-number">02</div>
+                    <h3>View Details</h3>
+                    <p>Check vehicle condition, watch videos, read reviews, and view owner information with pickup locations</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="step-number">03</div>
+                    <h3>Book & Drive</h3>
+                    <p>Contact the owner, confirm your booking, and hit the road. Pay only for the kilometers you travel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Have questions? We're here to help you find the perfect vehicle for your journey.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>support@rideease.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Office</h4>
+                                <p>Mumbai, Maharashtra, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car-side"></i>
+                        <span>RideEase</span>
+                    </div>
+                    <p>Your trusted partner for premium vehicle rentals. Travel with freedom, pay by kilometer.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#vehicles">Vehicles</a></li>
+                        <li><a href="#how-it-works">How it Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Vehicle Types</h3>
+                    <ul>
+                        <li><a href="#">Premium Cars</a></li>
+                        <li><a href="#">Sports Bikes</a></li>
+                        <li><a href="#">SUVs</a></li>
+                        <li><a href="#">Luxury Sedans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RideEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vehicle Detail Modal -->
+    <div class="modal" id="vehicleModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Vehicle details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-overlay" id="bookingModalOverlay"></div>
+        <div class="modal-container modal-small">
+            <button class="modal-close" id="bookingModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="booking-modal-content" id="bookingModalContent">
+                <!-- Booking details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
